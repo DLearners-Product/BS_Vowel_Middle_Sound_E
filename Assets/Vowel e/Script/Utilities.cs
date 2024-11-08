@@ -11,6 +11,10 @@ public class Utilities : MonoGenericSingleton<Utilities>
 
     public void ANIM_ShowNormal(Transform obj) => obj.DOScale(Vector3.one, 0.5f);
 
+    public void ScaleObject(Transform obj) {
+        obj.DOScale(Vector3.one * 1.5f, 1f);
+    }
+
 
     public void ANIM_ShowBounceNormal(Transform obj)
     {

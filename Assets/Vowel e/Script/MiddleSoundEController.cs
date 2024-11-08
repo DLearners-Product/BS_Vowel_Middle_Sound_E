@@ -12,11 +12,16 @@ public class MiddleSoundEController : MonoBehaviour
     public GameObject celebrateObj;
     public TextMeshProUGUI textMeshProUGUI;
     public TextMeshProUGUI counterDisplay;
+    public GameObject activityCompleted;
+    public AudioClip AC_right, AC_wrong;
+    public AudioClip[] AC_questions;
+    AudioSource audioSource;
     int totalQuestion = 6;
     int counter = 0;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         UpdateCounter();
     }
 
@@ -24,13 +29,20 @@ public class MiddleSoundEController : MonoBehaviour
         ImageDropSlot.onDropInSlot += OnVowelDroped;
     }
 
+    private void OnDisable() {
+        ImageDropSlot.onDropInSlot -= OnVowelDroped;
+    }
+
     void OnVowelDroped(GameObject droppedObj)
     {
-        if(droppedObj.name == "E" && counter < totalQuestion){
+        if(droppedObj.name == "E"){
             celebrateObj.SetActive(true);
             celebrateObj.GetComponent<ParticleSystem>().Play();
             textMeshProUGUI.text = "E";
+            audioSource.PlayOneShot(AC_questions[counter - 1]);
             StartCoroutine(DisableParticleSystem());
+        }else{
+            audioSource.PlayOneShot(AC_wrong);
         }
     }
 
@@ -38,14 +50,20 @@ public class MiddleSoundEController : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         celebrateObj.SetActive(false);
-        textMeshProUGUI.text = "__";
-        firstCharacterRandomizer.SwitchObject();
-        secCharacterRandomizer.SwitchObject();
-        questionRandomizer.SwitchObject();
+
+        if(counter + 1 < totalQuestion){
+            textMeshProUGUI.text = "__";
+            firstCharacterRandomizer.SwitchObject();
+            secCharacterRandomizer.SwitchObject();
+            questionRandomizer.SwitchObject();
+        }else{
+            activityCompleted.SetActive(true);
+        }
+
         UpdateCounter();
     }
 
     void UpdateCounter() {
-        counterDisplay.text = $"0{++counter} / 0{totalQuestion}";
+        counterDisplay.text = $"{++counter} / {totalQuestion}";
     }
 }

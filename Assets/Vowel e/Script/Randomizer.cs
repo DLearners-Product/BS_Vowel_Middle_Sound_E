@@ -15,7 +15,7 @@ public class Randomizer : MonoBehaviour
     float timeElapsed = 0;
     GameObject _parentObj;
     int counter = 0;
-    public bool displayLog;
+    // public bool displayLog;
 
     void Start()
     {
@@ -46,8 +46,12 @@ public class Randomizer : MonoBehaviour
     void MoveObject() {
         transform.position += GetDirection(_movementDirection) * movementSpeed * Time.deltaTime;
 
-        if(displayLog)
-            Debug.Log($"Distance == {Vector3.Distance(_parentObj.transform.position, childLetters[counter].transform.position)}");
+
+        // if(displayLog)
+        // {
+        //     Debug.Log($"COUNTER :: {counter}");
+        //     Debug.Log($"Distance == {Vector3.Distance(_parentObj.transform.position, childLetters[counter].transform.position)} {transform.parent.name}");
+        // }
 
         if(Vector3.Distance(_parentObj.transform.position, childLetters[counter].transform.position) <= stopDistance) {
             updateDelegate -= MoveObject;
