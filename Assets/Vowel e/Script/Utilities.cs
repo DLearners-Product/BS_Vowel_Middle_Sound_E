@@ -11,10 +11,10 @@ public class Utilities : MonoGenericSingleton<Utilities>
 
     public void ANIM_ShowNormal(Transform obj) => obj.DOScale(Vector3.one, 0.5f);
 
-    public void ScaleObject(Transform obj) {
-        obj.DOScale(Vector3.one * 1.5f, 1f);
+    public void ScaleObject(Transform obj)
+    {
+        obj.DOScale(Vector3.one * 1.5f, 0f);
     }
-
 
     public void ANIM_ShowBounceNormal(Transform obj)
     {
@@ -42,6 +42,21 @@ public class Utilities : MonoGenericSingleton<Utilities>
         obj.DOMove(endPos, 0.5f);
     }
 
+    public void ANIM_MoveWithScaleUp(Transform obj, Vector3 endPos)
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(obj.DOMove(endPos, 0.5f));
+        sequence.Join(obj.DOScale(Vector3.one * 1.5f, 0.5f));
+        sequence.Play();
+    }
+
+    public void ANIM_MoveWithScaleDown(Transform obj, Vector3 endPos)
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(obj.DOMove(endPos, 0.5f));
+        sequence.Join(obj.DOScale(Vector3.one, 0.5f));
+        sequence.Play();
+    }
 
     public void ANIM_CorrectScaleEffect(Transform obj) => StartCoroutine(IENUM_Hearbeat(obj));
     IEnumerator IENUM_Hearbeat(Transform obj)
