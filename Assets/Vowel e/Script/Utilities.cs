@@ -89,6 +89,11 @@ public class Utilities : MonoGenericSingleton<Utilities>
     public void ANIM_RotateHide(Transform obj) => obj.DORotate(new Vector3(0, 90, 0), 0.35f);
     public void ANIM_RotateShow(Transform obj) => obj.DORotate(new Vector3(0, 0, 0), 0.35f);
 
+    public void ANIM_ShrinkObject(Transform obj)
+    {
+        obj.DOScale(Vector3.zero, 0.5f);
+    }
+
     public void ANIM_FlyIn(Transform obj) => obj.DOMoveY(-1.6f, 2f).SetEase(Ease.OutCirc);
     // public void ANIM_FlyIn(Transform obj) => obj.DOMove(new Vector3(obj.transform.position.x, -1.6f, 0), 2f).SetEase(Ease.OutCirc);
 
