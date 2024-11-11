@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Rotator : MonoBehaviour
@@ -17,7 +18,6 @@ public class Rotator : MonoBehaviour
     void Start()
     {
         SpawnObjects();
-        // StartCoroutine(StartQuesChange());
     }
 
     void Update()
@@ -34,12 +34,9 @@ public class Rotator : MonoBehaviour
     {
         for (int i = 0; i < spawnPoints.Length - 1; i++)
         {
-            var instantiatedObj = Instantiate(framePrefab, transform);
+            var instantiatedObj = GetInstantiatedFrameObj();
             instantiatedObj.transform.position = spawnPoints[i].transform.position;
             instantiatedObjs.Add(instantiatedObj);
-            instantiatedObj.name += $"_{++spawnCount}";
-            instantiatedObj.transform.GetChild(1).transform.GetChild(0).GetComponent<Image>().sprite = _obj.GetSprite();
-            Debug.Log($"Sprite Name :: {instantiatedObj.transform.GetChild(1).transform.GetChild(0).GetComponent<Image>().sprite.name}");
 
             if(i == 2){
                 Utilities.Instance.ScaleObject(instantiatedObj.transform);
@@ -47,10 +44,16 @@ public class Rotator : MonoBehaviour
         }
     }
 
-    // IEnumerator StartQuesChange()
-    // {
-    //     yield return new WaitForSeconds(2);
-    // }
+    GameObject GetInstantiatedFrameObj()
+    {
+        var instantiatedObj = Instantiate(framePrefab, transform);
+
+        instantiatedObj.name += $"_{++spawnCount}";
+        instantiatedObj.transform.GetChild(1).transform.GetChild(0).GetComponent<Image>().sprite = _obj.GetSprite();
+        instantiatedObj.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(OnFrameClicked);
+
+        return instantiatedObj;
+    }
 
     void ChangeQuestion()
     {
@@ -76,10 +79,22 @@ public class Rotator : MonoBehaviour
         Destroy(instantiatedObjs[instantiatedObjs.Count - 1]);
         instantiatedObjs.RemoveAt(instantiatedObjs.Count - 1);
 
-        var instantiatedObj = Instantiate(framePrefab, transform);
-        instantiatedObj.name += $"_{++spawnCount}";
+        var instantiatedObj = GetInstantiatedFrameObj();
+
         instantiatedObj.transform.position = spawnPoints[0].transform.position;
         instantiatedObjs.Insert(0,instantiatedObj);
+    }
 
+    public void OnFrameClicked()
+    {
+        var selectedObj = EventSystem.current.currentSelectedGameObject;
+        Debug.Log($"Frame Buttonclicked.... {selectedObj.name}", selectedObj);
+
+        if(_obj.EvaluateAnswer(selectedObj.transform.parent.GetChild(1).transform.GetChild(0).GetComponent<Image>().sprite.name))
+        {
+            selectedObj.transform.parent.GetChild(3).gameObject.SetActive(true);
+            selectedObj.transform.parent.GetChild(3).GetComponent<ParticleSystem>().Play();
+            _obj.DisplayAnswer(selectedObj.transform.parent.GetChild(1).transform.GetChild(0).GetComponent<Image>().sprite);
+        }
     }
 }
