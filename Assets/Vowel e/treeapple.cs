@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
+using JetBrains.Annotations;
 
 public class treeapple : MonoBehaviour
 {
@@ -13,7 +15,8 @@ public class treeapple : MonoBehaviour
     public GameObject G_levelcomp;
     public  bool B_levelcomp;
     public static treeapple OBJ_treeapple;
-
+    public TextMeshProUGUI counterText;
+    int TOTAL_ANS = 6;
 
     public void Start()
     {
@@ -22,6 +25,7 @@ public class treeapple : MonoBehaviour
   
         B_levelcomp = false;
         G_levelcomp.SetActive(false);
+        UpdateCounterText();
     }
     public void Update()
     {
@@ -64,7 +68,8 @@ public class treeapple : MonoBehaviour
             EventSystem.current.currentSelectedGameObject.GetComponent<Rigidbody2D>().gravityScale = 0.8f;
             B_lerp = true;
             I_collection++;
-            if (I_collection == 8)
+            UpdateCounterText();
+            if (I_collection == TOTAL_ANS)
             {
                 B_levelcomp = true;
             }
@@ -109,5 +114,10 @@ public class treeapple : MonoBehaviour
                 }
             }
         }
+    }
+
+    void UpdateCounterText()
+    {
+        counterText.text = $"{I_collection} / {TOTAL_ANS}";
     }
 }
