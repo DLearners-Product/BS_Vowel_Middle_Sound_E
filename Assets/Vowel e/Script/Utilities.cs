@@ -36,6 +36,20 @@ public class Utilities : MonoGenericSingleton<Utilities>
         sequence.Play();
     }
 
+    public void ANIM_Explode(Transform obj)
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(obj.DOScale(Vector3.one, 1f));
+        sequence.Join(obj.GetComponent<Image>().DOFade(0, 1f));
+        sequence.Play();
+    }
+
+    public void ANIM_SpeakerReset(Transform obj)
+    {
+        Debug.Log("CAME HERE....");
+        // obj.DOScale(Vector3.zero, 0);
+        // obj.GetComponent<Image>().DOFade(1, 0);
+    }
 
     public void ANIM_Move(Transform obj, Vector3 endPos)
     {

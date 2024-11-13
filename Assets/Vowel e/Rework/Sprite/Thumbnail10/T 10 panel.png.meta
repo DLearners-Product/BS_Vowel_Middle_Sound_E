@@ -1,7 +1,19 @@
 fileFormatVersion: 2
-guid: f6bbf251fc9ca1b49bf59e63b72f3ec1
+guid: 8cfcde59ea541444e8a91f02a0d1a468
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 5236408398719454875
+    second: T 10 panel_0
+  - first:
+      213: 5103352792138323812
+    second: T 10 panel_1
+  - first:
+      213: -2996872294006030534
+    second: T 10 panel_2
+  - first:
+      213: -3875190821394060312
+    second: T 10 panel_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -97,7 +109,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: T 10 panel_0
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 680
+        width: 456
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9e8b88e1b57ba840800000000000000
+      internalID: 5236408398719454875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T 10 panel_1
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 819
+        width: 313
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46717e26350c2d640800000000000000
+      internalID: 5103352792138323812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T 10 panel_2
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 53
+        width: 361
+        height: 459
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3f7f86d688f866d0800000000000000
+      internalID: -2996872294006030534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T 10 panel_3
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 53
+        width: 364
+        height: 459
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ebe3f5ca7e883ac0800000000000000
+      internalID: -3875190821394060312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

@@ -1,32 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class eaudit : MonoBehaviour
 {
-    
     public int I_count;
     public AudioSource[] AS_words;
     public static eaudit OBJ_eaudit;
     public AudioSource AS_correct, AS_wrong;
+    public Transform speakerBurst;
+    AudioSource audioSource;
+    public Animator speakerBtnAnim;
+    public Transform speakerBTN;
 
     public void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         OBJ_eaudit = this;
         I_count = 0;
-        Invoke("THI_Sound", 1f);
+        // Invoke(nameof(THI_Sound), 1f);
     }
 
 
     public void BUT_next()
     {
         I_count++;
-        THI_Sound();
+        // THI_Sound();
     }
 
-    public void THI_Sound()
+    public float THI_Sound()
     {
         AS_words[I_count].Play();
+        return AS_words[I_count].clip.length;
     }
 
     public void BUT_yes()
@@ -51,6 +57,24 @@ public class eaudit : MonoBehaviour
         {
             AS_wrong.Play();
         }
+    }
+
+    public void PlayQuestionAudio()
+    {
+        speakerBTN.gameObject.SetActive(true);
+        speakerBtnAnim.Play("speaker");
+        Utilities.Instance.ANIM_Explode(speakerBTN);
+        // THI_Sound();
+        StartCoroutine(StopAnimation(THI_Sound()));
+    }
+
+    IEnumerator StopAnimation(float waitSec)
+    {
+        yield return new WaitForSeconds(1.5f);
+        speakerBtnAnim.Play("New State");
+        // Utilities.Instance.ANIM_SpeakerReset(speakerBTN);
+        speakerBTN.localScale = Vector3.zero;
+        speakerBTN.GetComponent<Image>().color = Color.white;
     }
 
 }
