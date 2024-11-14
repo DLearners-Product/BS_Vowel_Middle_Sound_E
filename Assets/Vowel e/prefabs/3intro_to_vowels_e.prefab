@@ -496,8 +496,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 3737128633903662212}
+  videoLoading: {fileID: 4945578818612628505, guid: 7bbcfff65bcba47eca147f4dd353b3bd,
+    type: 3}
+  videoLoadingErrorPanel: {fileID: 6766524044836817131, guid: 7c1afd785e6e44b1cac383a50715afac,
+    type: 3}
+  spawnedLoader: {fileID: 0}
+  thumbnailTexture: {fileID: 0}
   Cam: {fileID: 0}
   progress: {fileID: 3737128633348004764}
+  enablePanelOnVideoComplete: {fileID: 0}
 --- !u!1 &3737128634942734554
 GameObject:
   m_ObjectHideFlags: 0

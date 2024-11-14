@@ -29,9 +29,16 @@ public class Thumbnail8Controller : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         StartCoroutine(DisableAnimator());
-        ImageDropSlot.onDropInSlot += OnOptionDrop;
         UpdateCounterText();
         DisplayNextQuestion();
+    }
+
+    private void OnEnable() {
+        ImageDropSlot.onDropInSlot += OnOptionDrop;
+    }
+
+    private void OnDisable() {
+        ImageDropSlot.onDropInSlot -= OnOptionDrop;
     }
 
     IEnumerator DisableAnimator()

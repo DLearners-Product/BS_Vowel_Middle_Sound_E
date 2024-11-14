@@ -96,31 +96,31 @@ namespace DG.Tweening
             }
 
             // Returns FALSE if the DOTween's Physics2D Module is disabled, or if there's no Rigidbody2D attached
-            public static bool HasRigidbody2D(Component target)
-            {
-#if true // PHYSICS2D_MARKER
-                return target.GetComponent<Rigidbody2D>() != null;
-#else
-                return false;
-#endif
-            }
+//             public static bool HasRigidbody2D(Component target)
+//             {
+// #if true // PHYSICS2D_MARKER
+//                 return target.GetComponent<Rigidbody2D>() != null;
+// #else
+//                 return false;
+// #endif
+//             }
 
             #region Called via Reflection
 
 
             // Called via Reflection by DOTweenPathInspector
             // Returns FALSE if the DOTween's Physics Module is disabled, or if there's no rigidbody attached
-#if UNITY_2018_1_OR_NEWER
-            [UnityEngine.Scripting.Preserve]
-#endif
-            public static bool HasRigidbody(Component target)
-            {
-#if true // PHYSICS_MARKER
-                return target.GetComponent<Rigidbody>() != null;
-#else
-                return false;
-#endif
-            }
+// #if UNITY_2018_1_OR_NEWER
+//             [UnityEngine.Scripting.Preserve]
+// #endif
+//             public static bool HasRigidbody(Component target)
+//             {
+// #if true // PHYSICS_MARKER
+//                 return target.GetComponent<Rigidbody>() != null;
+// #else
+//                 return false;
+// #endif
+//             }
 
             // Called via Reflection by DOTweenPath
 #if UNITY_2018_1_OR_NEWER
