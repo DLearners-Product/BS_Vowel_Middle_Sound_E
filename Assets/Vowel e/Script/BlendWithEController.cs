@@ -8,6 +8,8 @@ public class BlendWithEController : MonoBehaviour
     public GameObject[] imagesObjs;
     public GameObject[] textObjs;
     public GameObject[] _particleSystems;
+    public AudioClip[] _unBlendedaudioClips;
+    public AudioClip[] _blendedAudioClips;
     public DotNavigation dotNavObj;
     public AudioClip clickAudioClip;
     public AudioSource audioSource;
@@ -49,13 +51,25 @@ public class BlendWithEController : MonoBehaviour
         _particleSystems[counter].SetActive(true);
         _particleSystems[counter].GetComponent<ParticleSystem>().Play();
         questionTransition = true;
-        audioSource.PlayOneShot(clickAudioClip);
+        // audioSource.PlayOneShot(clickAudioClip);
+        audioSource.PlayOneShot(_blendedAudioClips[counter]);
 
         if(textObjs[counter].GetComponent<TextMeshProUGUI>().text[0] == textObjs[counter].name[0]) return;
 
         textObjs[counter].GetComponent<TextMeshProUGUI>().text = textObjs[counter].name[0] + textObjs[counter].GetComponent<TextMeshProUGUI>().text;
 
         StartCoroutine(WaitForSomeTime(2f));
+    }
+
+    public void OnNameBoardClicked()
+    {
+        if(textObjs[counter].GetComponent<TextMeshProUGUI>().text[0] == '<') 
+        {
+            audioSource.PlayOneShot(_unBlendedaudioClips[counter]);
+            return;
+        }
+
+        audioSource.PlayOneShot(_blendedAudioClips[counter]);
     }
 
     IEnumerator WaitForSomeTime(float waitFor) {

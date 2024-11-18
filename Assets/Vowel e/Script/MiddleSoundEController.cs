@@ -51,7 +51,7 @@ public class MiddleSoundEController : MonoBehaviour
         yield return new WaitForSeconds(2f);
         celebrateObj.SetActive(false);
 
-        if(counter + 1 < totalQuestion){
+        if(counter < totalQuestion){
             textMeshProUGUI.text = "__";
             firstCharacterRandomizer.SwitchObject();
             secCharacterRandomizer.SwitchObject();
