@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ public class Rotator : MonoBehaviour
     public LetsFindOutController _obj;
     int spawnCount = 0;
     bool doRotation = true;
+    Transform currentHighlightedObj;
 
     void Start()
     {
@@ -43,6 +45,8 @@ public class Rotator : MonoBehaviour
 
             if(i == 2){
                 Utilities.Instance.ScaleObject(instantiatedObj.transform);
+                currentHighlightedObj = instantiatedObj.transform;
+                PlayHighlightenedAudio();
             }
         }
     }
@@ -64,7 +68,8 @@ public class Rotator : MonoBehaviour
         {
             if(i == 1)
             {
-                Utilities.Instance.ANIM_MoveWithScaleUp(instantiatedObjs[i].transform, spawnPoints[i + 1].transform.position);
+                currentHighlightedObj = instantiatedObjs[i].transform;
+                Utilities.Instance.ANIM_MoveWithScaleUp(instantiatedObjs[i].transform, spawnPoints[i + 1].transform.position, PlayHighlightenedAudio);
             }else if(i == 2)
             {
                 Utilities.Instance.ANIM_MoveWithScaleDown(instantiatedObjs[i].transform, spawnPoints[i + 1].transform.position);
@@ -74,6 +79,11 @@ public class Rotator : MonoBehaviour
         }
 
         StartCoroutine(OrganiseQuestions());
+    }
+
+    void PlayHighlightenedAudio()
+    {
+        _obj.PlayHighlightedFrameAudio(currentHighlightedObj.GetChild(1).transform.GetChild(0).GetComponent<Image>().sprite.name);
     }
 
     IEnumerator OrganiseQuestions()

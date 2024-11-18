@@ -95,6 +95,11 @@ public class LetsFindOutController : MonoBehaviour
         return 0f;
     }
 
+    public void PlayHighlightedFrameAudio(string audioStr)
+    {
+        PlayAnswerAudio(audioStr);
+    }
+
     void EnableActivityCompleted()
     {
         activityCompleted.SetActive(true);

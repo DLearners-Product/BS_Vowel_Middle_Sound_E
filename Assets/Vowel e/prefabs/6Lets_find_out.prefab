@@ -605,6 +605,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 48b891ef8fb324834b90a28225d11006, type: 3}
   - {fileID: 8300000, guid: e9661427a9f564baaa07c117740e45b9, type: 3}
   - {fileID: 8300000, guid: 50e0c97cbb6094cdfbeadbd357bc38d2, type: 3}
+  - {fileID: 8300000, guid: b751db937a5ff4c4dba8d3ff6a0b1a02, type: 3}
+  - {fileID: 8300000, guid: 681243ae5d53e0443b849e504effebfe, type: 3}
+  - {fileID: 8300000, guid: 8a7ed80bd010ba84e8b1daf4ce92fc5c, type: 3}
+  - {fileID: 8300000, guid: 192a6160d3c0ed74b852847e0183e4a7, type: 3}
   wrongClip: {fileID: 8300000, guid: ddc0fe2d45c8ccd4b8ce29f5d69beec0, type: 3}
   counterDisplay: {fileID: 1855973767783399051}
   activityCompleted: {fileID: 621408616701353771}

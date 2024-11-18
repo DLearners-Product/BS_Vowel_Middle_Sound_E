@@ -46,7 +46,6 @@ public class Utilities : MonoGenericSingleton<Utilities>
 
     public void ANIM_SpeakerReset(Transform obj)
     {
-        Debug.Log("CAME HERE....");
         // obj.DOScale(Vector3.zero, 0);
         // obj.GetComponent<Image>().DOFade(1, 0);
     }
@@ -56,19 +55,21 @@ public class Utilities : MonoGenericSingleton<Utilities>
         obj.DOMove(endPos, 0.5f);
     }
 
-    public void ANIM_MoveWithScaleUp(Transform obj, Vector3 endPos)
+    public void ANIM_MoveWithScaleUp(Transform obj, Vector3 endPos, TweenCallback onCompleteCallBack=null)
     {
         Sequence sequence = DOTween.Sequence();
         sequence.Append(obj.DOMove(endPos, 0.5f));
         sequence.Join(obj.DOScale(Vector3.one * 1.5f, 0.5f));
+        sequence.onComplete += onCompleteCallBack;
         sequence.Play();
     }
 
-    public void ANIM_MoveWithScaleDown(Transform obj, Vector3 endPos)
+    public void ANIM_MoveWithScaleDown(Transform obj, Vector3 endPos, TweenCallback onCompleteCallBack=null)
     {
         Sequence sequence = DOTween.Sequence();
         sequence.Append(obj.DOMove(endPos, 0.5f));
         sequence.Join(obj.DOScale(Vector3.one, 0.5f));
+        sequence.onComplete += onCompleteCallBack;
         sequence.Play();
     }
 
