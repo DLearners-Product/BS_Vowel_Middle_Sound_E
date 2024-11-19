@@ -693,7 +693,7 @@ MonoBehaviour:
   videoLoadingErrorPanel: {fileID: 6766524044836817131, guid: 7c1afd785e6e44b1cac383a50715afac,
     type: 3}
   spawnedLoader: {fileID: 0}
-  thumbnailTexture: {fileID: 0}
+  thumbnailTexture: {fileID: 2800000, guid: 140cb74bcac987e428252662c6d45533, type: 3}
   Cam: {fileID: 0}
   progress: {fileID: 3737128633348004764}
   enablePanelOnVideoComplete: {fileID: 835190363}
