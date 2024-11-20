@@ -134,7 +134,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: build-WebGL
-          path: build/WebGL
+          path: build/html_basic
 #  deployPages:
 #    needs: buildWebGL
 #    name: Deploy to Github Pages 🚀
