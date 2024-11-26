@@ -139,6 +139,10 @@ jobs:
       - name: List Project Structure 2
         run:
           ls -al 
+
+      - name: Listing Build Folder
+        run:
+          ls -al build/
 #  deployPages:
 #    needs: buildWebGL
 #    name: Deploy to Github Pages 🚀
