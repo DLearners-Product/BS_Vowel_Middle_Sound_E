@@ -38,7 +38,7 @@ public class MiddleSoundEController : MonoBehaviour
         if(droppedObj.name == "E"){
             celebrateObj.SetActive(true);
             celebrateObj.GetComponent<ParticleSystem>().Play();
-            textMeshProUGUI.text = "E";
+            textMeshProUGUI.text = "e";
             audioSource.PlayOneShot(AC_questions[counter - 1]);
             StartCoroutine(DisableParticleSystem());
         }else{

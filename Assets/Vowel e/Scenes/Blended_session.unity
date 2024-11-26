@@ -4404,7 +4404,7 @@ MonoBehaviour:
     teacherInstruction: 
     activityInstruction: 
     activityType: 0
-    HAS_VIDEO: 0
+    HAS_VIDEO: 1
     HAS_WORKSHEET: 0
     HAS_SYLLABLE: 0
     HAS_GRAMMER: 0
@@ -4495,7 +4495,7 @@ MonoBehaviour:
     teacherInstruction: 
     activityInstruction: 
     activityType: 0
-    HAS_VIDEO: 0
+    HAS_VIDEO: 1
     HAS_WORKSHEET: 0
     HAS_SYLLABLE: 0
     HAS_GRAMMER: 0
@@ -4508,7 +4508,7 @@ MonoBehaviour:
     teacherInstruction: 
     activityInstruction: 
     activityType: 0
-    HAS_VIDEO: 0
+    HAS_VIDEO: 1
     HAS_WORKSHEET: 0
     HAS_SYLLABLE: 0
     HAS_GRAMMER: 0

@@ -33,13 +33,13 @@ public class eaudit : MonoBehaviour
     public void BUT_next()
     {
         I_count++;
-        UpdateCounterText();
 
         if(I_count == AS_words.Length) {
             activityCompleted.SetActive(true); 
             return;
         }
 
+        UpdateCounterText();
         PlayQuestionAudio();
     }
 
@@ -123,6 +123,6 @@ public class eaudit : MonoBehaviour
 
     void UpdateCounterText()
     {
-        counterText.text = $"{I_count} / {AS_words.Length}";
+        counterText.text = $"{I_count + 1} / {AS_words.Length}";
     }
 }

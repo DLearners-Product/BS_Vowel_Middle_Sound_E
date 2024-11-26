@@ -381,6 +381,7 @@ GameObject:
   - component: {fileID: 1855973766310358353}
   - component: {fileID: 1855973766310358355}
   - component: {fileID: 1855973766310358352}
+  - component: {fileID: 4957021945257923691}
   m_Layer: 5
   m_Name: ScoreBoard
   m_TagString: Untagged
@@ -446,6 +447,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &4957021945257923691
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855973766310358190}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 326f2e028df82da43994d6faab68cb81, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1855973766372437630
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,16 +594,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 76ed7c2a50ce6ff48bc8e23a28859e34, type: 3}
-  - {fileID: 21300000, guid: d1ca78869caca2a4aa639c6ef56578a8, type: 3}
-  - {fileID: 21300000, guid: 807c3601fea713844a86f3f8ae41e711, type: 3}
-  - {fileID: 21300000, guid: f6bbf251fc9ca1b49bf59e63b72f3ec1, type: 3}
   - {fileID: 21300000, guid: a885fb951946c8c44a2a2495ab363638, type: 3}
-  - {fileID: 21300000, guid: 0e20b62499ba9d245b39305822e114da, type: 3}
-  - {fileID: 21300000, guid: a4e7823562aed1d47a8b05189d196402, type: 3}
+  - {fileID: 21300000, guid: 76ed7c2a50ce6ff48bc8e23a28859e34, type: 3}
   - {fileID: 21300000, guid: eda89003f1355f643a359a3abfe218f5, type: 3}
+  - {fileID: 21300000, guid: f6bbf251fc9ca1b49bf59e63b72f3ec1, type: 3}
   - {fileID: 21300000, guid: 5691875cf1d531d469c30b1f91e9daba, type: 3}
+  - {fileID: 21300000, guid: d1ca78869caca2a4aa639c6ef56578a8, type: 3}
+  - {fileID: 21300000, guid: a4e7823562aed1d47a8b05189d196402, type: 3}
+  - {fileID: 21300000, guid: 807c3601fea713844a86f3f8ae41e711, type: 3}
   - {fileID: 21300000, guid: 49e3eaf0da9fd674499953dae05edb61, type: 3}
+  - {fileID: 21300000, guid: 0e20b62499ba9d245b39305822e114da, type: 3}
   correctAns:
   - hen
   - bed
