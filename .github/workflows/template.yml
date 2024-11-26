@@ -119,10 +119,6 @@ jobs:
             Library-build-
             Library-
 
-      - name: List Project Structure
-        run:
-          ls -al Assets/BlendedTemplate/
-
       - uses: webbertakken/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -131,10 +127,18 @@ jobs:
         with:
           targetPlatform: WebGL
 
+      - name: List Project Structure 1
+        run:
+          ls -al 
+
       - uses: actions/upload-artifact@v4
         with:
           name: build-WebGL
           path: build/html_basic
+
+      - name: List Project Structure 2
+        run:
+          ls -al 
 #  deployPages:
 #    needs: buildWebGL
 #    name: Deploy to Github Pages 🚀
