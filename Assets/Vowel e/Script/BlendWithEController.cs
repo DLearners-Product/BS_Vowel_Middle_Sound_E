@@ -13,6 +13,7 @@ public class BlendWithEController : MonoBehaviour
     public DotNavigation dotNavObj;
     public AudioClip clickAudioClip;
     public AudioSource audioSource;
+    public GameObject gameOverScreen;
     public AnimationClip AC_slideLeftToFrame;
     public AnimationClip AC_slideRightToFrame;
     public AnimationClip AC_slideFrameToLeft;
@@ -21,7 +22,7 @@ public class BlendWithEController : MonoBehaviour
     bool questionTransition = false;
 
     void EnableNextActivityObject() {
-        if((counter + 1) >= 6) return;
+        if((counter + 1) >= 6) { gameOverScreen.SetActive(true); return; }
 
         dotNavObj.OnClickNextButton();
 
@@ -54,9 +55,9 @@ public class BlendWithEController : MonoBehaviour
         // audioSource.PlayOneShot(clickAudioClip);
         audioSource.PlayOneShot(_blendedAudioClips[counter]);
 
-        if(textObjs[counter].GetComponent<TextMeshProUGUI>().text[0] == textObjs[counter].name[0]) return;
+        if(textObjs[counter].GetComponent<TextMeshProUGUI>().text[0].ToString() == textObjs[counter].name[0].ToString().ToLower()) return;
 
-        textObjs[counter].GetComponent<TextMeshProUGUI>().text = textObjs[counter].name[0] + textObjs[counter].GetComponent<TextMeshProUGUI>().text;
+        textObjs[counter].GetComponent<TextMeshProUGUI>().text = textObjs[counter].name[0].ToString().ToLower() + textObjs[counter].GetComponent<TextMeshProUGUI>().text;
 
         StartCoroutine(WaitForSomeTime(2f));
     }

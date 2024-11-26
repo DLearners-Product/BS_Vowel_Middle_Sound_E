@@ -454,6 +454,7 @@ MonoBehaviour:
   dotNavObj: {fileID: 7724324774177668741}
   clickAudioClip: {fileID: 8300000, guid: a39c46c82d9df44d7a7b5f541fcf7c9d, type: 3}
   audioSource: {fileID: 5433303281606262194}
+  gameOverScreen: {fileID: 7427426252577437604}
   AC_slideLeftToFrame: {fileID: 7400000, guid: 957695f9dfc2115468bbd3eb5ca986c5, type: 2}
   AC_slideRightToFrame: {fileID: 7400000, guid: bdf306ce5f033194ab8e50a5a39618f8,
     type: 2}
@@ -690,7 +691,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <color=red>E</color>N
+  m_text: <color=red>e</color>n
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 373e0bfaf40d79641a5182e4513d67de, type: 2}
   m_sharedMaterial: {fileID: 8610426517522080127, guid: 373e0bfaf40d79641a5182e4513d67de,
@@ -953,7 +954,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <color=red>E</color>T
+  m_text: <color=red>e</color>t
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 373e0bfaf40d79641a5182e4513d67de, type: 2}
   m_sharedMaterial: {fileID: 8610426517522080127, guid: 373e0bfaf40d79641a5182e4513d67de,
@@ -1997,7 +1998,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <color=red>E</color>G
+  m_text: <color=red>e</color>g
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 373e0bfaf40d79641a5182e4513d67de, type: 2}
   m_sharedMaterial: {fileID: 8610426517522080127, guid: 373e0bfaf40d79641a5182e4513d67de,
@@ -2131,7 +2132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <color=red>E</color>D
+  m_text: <color=red>e</color>d
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 373e0bfaf40d79641a5182e4513d67de, type: 2}
   m_sharedMaterial: {fileID: 8610426517522080127, guid: 373e0bfaf40d79641a5182e4513d67de,
@@ -2717,7 +2718,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <color=red>E</color>B
+  m_text: <color=red>e</color>b
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 373e0bfaf40d79641a5182e4513d67de, type: 2}
   m_sharedMaterial: {fileID: 8610426517522080127, guid: 373e0bfaf40d79641a5182e4513d67de,
@@ -3244,7 +3245,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <color=red>E</color>D
+  m_text: <color=red>e</color>d
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 373e0bfaf40d79641a5182e4513d67de, type: 2}
   m_sharedMaterial: {fileID: 8610426517522080127, guid: 373e0bfaf40d79641a5182e4513d67de,

@@ -37,11 +37,11 @@ public class Rotator : MonoBehaviour
 
     void SpawnObjects()
     {
-        for (int i = 0; i < spawnPoints.Length - 1; i++)
+        for (int i = spawnPoints.Length - 2; i >=0 ; i--)
         {
             var instantiatedObj = GetInstantiatedFrameObj();
             instantiatedObj.transform.position = spawnPoints[i].transform.position;
-            instantiatedObjs.Add(instantiatedObj);
+            instantiatedObjs.Insert(0, instantiatedObj);
 
             if(i == 2){
                 Utilities.Instance.ScaleObject(instantiatedObj.transform);
