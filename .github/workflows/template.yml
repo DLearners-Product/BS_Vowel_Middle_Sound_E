@@ -142,7 +142,7 @@ jobs:
 
       - name: Listing Build Folder
         run:
-          ls -al build/WebGL/
+          ls -al build/WebGL/WebGL/
 #  deployPages:
 #    needs: buildWebGL
 #    name: Deploy to Github Pages 🚀
