@@ -127,22 +127,22 @@ jobs:
         with:
           targetPlatform: WebGL
 
-      - name: List Project Structure 1
-        run:
-          ls -al 
+      # - name: List Project Structure 1
+      #   run:
+      #     ls -al 
 
       - uses: actions/upload-artifact@v4
         with:
           name: build-WebGL
-          path: build/html_basic
+          path: build/WebGL
 
-      - name: List Project Structure 2
-        run:
-          ls -al 
+      # - name: List Project Structure 2
+      #   run:
+      #     ls -al 
 
-      - name: Listing Build Folder
-        run:
-          ls -al build/WebGL/WebGL/
+      # - name: Listing Build Folder
+      #   run:
+      #     ls -al build/WebGL/WebGL/
 #  deployPages:
 #    needs: buildWebGL
 #    name: Deploy to Github Pages 🚀
