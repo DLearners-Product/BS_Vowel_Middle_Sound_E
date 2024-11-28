@@ -19,6 +19,17 @@ public class LetsFindOutController : MonoBehaviour
     int displayCounter=0;
     AudioSource audioSource;
     List<string> _answeredQuestion;
+  
+#region QA
+    private int qIndex;
+    public GameObject questionGO;
+    public GameObject[] optionsGO;
+    public bool isActivityCompleted = false;
+    public Dictionary<string, Component> additionalFields;
+    Component question;
+    Component[] options;
+    Component[] answers;
+#endregion
 
     void Awake()
     {
@@ -26,6 +37,17 @@ public class LetsFindOutController : MonoBehaviour
         _answeredQuestion = new List<string>();
         audioSource = GetComponent<AudioSource>();
         UpdateDisplayCounter();
+    }
+
+    private void Start() {
+#region DataSetter
+        Main_Blended.OBJ_main_blended.levelno = 6;
+        QAManager.instance.UpdateActivityQuestion();
+        qIndex = 0;
+        GetData(qIndex);
+        GetAdditionalData();
+        // AssignData();
+#endregion
     }
 
     public Sprite GetSprite()
@@ -104,4 +126,51 @@ public class LetsFindOutController : MonoBehaviour
     {
         activityCompleted.SetActive(true);
     }
+
+#region QA
+ 
+    int GetOptionID(string selectedOption)
+    {
+        for (int i = 0; i < options.Length; i++)
+        {
+            if (options[i].text == selectedOption)
+            {
+                Debug.Log(selectedOption);
+                return options[i].id;
+            }
+        }
+        return -1;
+    }
+
+    void GetData(int questionIndex)
+    {
+        question = QAManager.instance.GetQuestionAt(0, questionIndex);
+        // if(question != null){
+        options = QAManager.instance.GetOption(0, questionIndex);
+        answers = QAManager.instance.GetAnswer(0, questionIndex);
+        // }
+    }
+ 
+    void GetAdditionalData()
+    {
+        additionalFields = QAManager.instance.GetAdditionalField(0);
+    }
+ 
+    // void AssignData()
+    // {
+    //     // Custom code
+    //     for (int i = 0; i < optionsGO.Length; i++)
+    //     {
+    //         optionsGO[i].GetComponent<Image>().sprite = options[i]._sprite;
+    //         optionsGO[i].tag = "Untagged";
+    //         Debug.Log(optionsGO[i].name, optionsGO[i]);
+    //         if (CheckOptionIsAns(options[i]))
+    //         {
+    //             optionsGO[i].tag = "answer";
+    //         }
+    //     }
+    //     // answerCount.text = "/"+answers.Length;
+    // }
+
+#endregion
 }
