@@ -19,12 +19,11 @@ public class LetsFindOutController : MonoBehaviour
     int displayCounter=0;
     AudioSource audioSource;
     List<string> _answeredQuestion;
-  
+
 #region QA
     private int qIndex;
     public GameObject questionGO;
     public GameObject[] optionsGO;
-    public bool isActivityCompleted = false;
     public Dictionary<string, Component> additionalFields;
     Component question;
     Component[] options;
@@ -41,7 +40,7 @@ public class LetsFindOutController : MonoBehaviour
 
     private void Start() {
 #region DataSetter
-        Main_Blended.OBJ_main_blended.levelno = 6;
+        // Main_Blended.OBJ_main_blended.levelno = 6;
         QAManager.instance.UpdateActivityQuestion();
         qIndex = 0;
         GetData(qIndex);
@@ -52,9 +51,8 @@ public class LetsFindOutController : MonoBehaviour
 
     public Sprite GetSprite()
     {
-        if(_answeredQuestion.Contains(_sprites.Peek().name)){
+        while(_answeredQuestion.Contains(_sprites.Peek().name)){
             _sprites.Dequeue();
-            return null;
         }
         _sprites.Enqueue(_sprites.Peek());
         return _sprites.Dequeue();
@@ -82,6 +80,7 @@ public class LetsFindOutController : MonoBehaviour
 
     public void DisplayAnswer(Sprite ansSprite)
     {
+        ScoreManager.instance.RightAnswer(qIndex++, questionID: question.id, answerID: GetOptionID(ansSprite.name));
         displayImages[displayCounter].sprite = ansSprite;
         displayImages[displayCounter].gameObject.SetActive(true);
         Utilities.Instance.ANIM_CorrectScaleEffect(displayImages[displayCounter++].transform.parent);
@@ -98,8 +97,10 @@ public class LetsFindOutController : MonoBehaviour
         EnableActivityCompleted();
     }
 
-    public void WronglyAnswered()
+    public void WronglyAnswered(string answerVal)
     {
+        // var selectedObj = EventSystem.current.currentSelectedGameObject;
+        ScoreManager.instance.RightAnswer(qIndex, questionID: question.id, answerID: GetOptionID(answerVal));
         audioSource.PlayOneShot(wrongClip);
     }
 
@@ -124,6 +125,7 @@ public class LetsFindOutController : MonoBehaviour
 
     void EnableActivityCompleted()
     {
+        BlendedOperations.instance.NotifyActivityCompleted();
         activityCompleted.SetActive(true);
     }
 

@@ -20,16 +20,16 @@ public class MiddleSoundEController : MonoBehaviour
     int totalQuestion = 6;
     int counter = 0;
 
-    #region QA
-        private int qIndex;
-        public GameObject questionGO;
-        public GameObject[] optionsGO;
-        public bool isActivityCompleted = false;
-        public Dictionary<string, Component> additionalFields;
-        Component question;
-        Component[] options;
-        Component[] answers;
-    #endregion
+#region QA
+    private int qIndex;
+    public GameObject questionGO;
+    public GameObject[] optionsGO;
+    public bool isActivityCompleted = false;
+    public Dictionary<string, Component> additionalFields;
+    Component question;
+    Component[] options;
+    Component[] answers;
+#endregion
 
     void Start()
     {
@@ -117,20 +117,20 @@ public class MiddleSoundEController : MonoBehaviour
         additionalFields = QAManager.instance.GetAdditionalField(0);
     }
  
-    void AssignData()
-    {
-        // Custom code
-        for (int i = 0; i < optionsGO.Length; i++)
-        {
-            optionsGO[i].GetComponent<Image>().sprite = options[i]._sprite;
-            optionsGO[i].tag = "Untagged";
-            Debug.Log(optionsGO[i].name, optionsGO[i]);
-            // if (CheckOptionIsAns(options[i]))
-            // {
-            //     optionsGO[i].tag = "answer";
-            // }
-        }
-        // answerCount.text = "/"+answers.Length;
-    }
+    // void AssignData()
+    // {
+    //     // Custom code
+    //     for (int i = 0; i < optionsGO.Length; i++)
+    //     {
+    //         optionsGO[i].GetComponent<Image>().sprite = options[i]._sprite;
+    //         optionsGO[i].tag = "Untagged";
+    //         Debug.Log(optionsGO[i].name, optionsGO[i]);
+    //         // if (CheckOptionIsAns(options[i]))
+    //         // {
+    //         //     optionsGO[i].tag = "answer";
+    //         // }
+    //     }
+    //     // answerCount.text = "/"+answers.Length;
+    // }
 #endregion
 }

@@ -632,6 +632,8 @@ MonoBehaviour:
   wrongClip: {fileID: 8300000, guid: ddc0fe2d45c8ccd4b8ce29f5d69beec0, type: 3}
   counterDisplay: {fileID: 1855973767783399051}
   activityCompleted: {fileID: 621408616701353771}
+  questionGO: {fileID: 0}
+  optionsGO: []
 --- !u!82 &1855973766569781500
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1307,7 +1309,7 @@ MonoBehaviour:
   - {fileID: 1855973766174282917}
   - {fileID: 1855973767856032802}
   - {fileID: 1855973765946199762}
-  waitTime: 2
+  waitTime: 3
   instantiatedObjs: []
   _obj: {fileID: 1855973766569781501}
 --- !u!1 &1855973767542354214
