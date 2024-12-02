@@ -101,18 +101,28 @@ public class Rotator : MonoBehaviour
     public void OnFrameClicked()
     {
         var selectedObj = EventSystem.current.currentSelectedGameObject;
+        var _spriteImage = selectedObj.transform.parent.GetChild(1).transform.GetChild(0).GetComponent<Image>().sprite;
 
-        if(selectedObj.transform.parent.GetChild(1).transform.GetChild(0).GetComponent<Image>().sprite && _obj.EvaluateAnswer(selectedObj.transform.parent.GetChild(1).transform.GetChild(0).GetComponent<Image>().sprite.name))
+        if(!selectedObj.CompareTag("answer") && _spriteImage && _obj.EvaluateAnswer(_spriteImage.name))
         {
             selectedObj.transform.parent.GetChild(3).gameObject.SetActive(true);
             selectedObj.transform.parent.GetChild(3).GetComponent<ParticleSystem>().Play();
             _obj.DisplayAnswer(selectedObj.transform.parent.GetChild(1).transform.GetChild(0).GetComponent<Image>().sprite);
             doRotation = false;
             StartCoroutine(WaitFor(1.5f));
+
+            // var callBackFunc = () => RemoveSprite(selectedObj.transform.parent.GetChild(1).transform.GetChild(0).GetComponent<Image>());
+
             Utilities.Instance.ANIM_ShrinkObject(selectedObj.transform.parent.GetChild(1).transform.GetChild(0));
+            selectedObj.tag = "answer";
         }else{
-            _obj.WronglyAnswered();
+            _obj.WronglyAnswered((_spriteImage) ? _spriteImage.name : "");
         }
+    }
+
+    void RemoveSprite(Image displayIMG)
+    {
+        displayIMG.sprite = null;
     }
 
     IEnumerator WaitFor(float waitSecs)

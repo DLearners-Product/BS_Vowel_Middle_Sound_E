@@ -20,6 +20,16 @@ public class LetsFindOutController : MonoBehaviour
     AudioSource audioSource;
     List<string> _answeredQuestion;
 
+#region QA
+    private int qIndex;
+    public GameObject questionGO;
+    public GameObject[] optionsGO;
+    public Dictionary<string, Component> additionalFields;
+    Component question;
+    Component[] options;
+    Component[] answers;
+#endregion
+
     void Awake()
     {
         _sprites = new Queue<Sprite>(sprites);
@@ -28,11 +38,21 @@ public class LetsFindOutController : MonoBehaviour
         UpdateDisplayCounter();
     }
 
+    private void Start() {
+#region DataSetter
+        // Main_Blended.OBJ_main_blended.levelno = 6;
+        QAManager.instance.UpdateActivityQuestion();
+        qIndex = 0;
+        GetData(qIndex);
+        GetAdditionalData();
+        // AssignData();
+#endregion
+    }
+
     public Sprite GetSprite()
     {
-        if(_answeredQuestion.Contains(_sprites.Peek().name)){
+        while(_answeredQuestion.Contains(_sprites.Peek().name)){
             _sprites.Dequeue();
-            return null;
         }
         _sprites.Enqueue(_sprites.Peek());
         return _sprites.Dequeue();
@@ -60,6 +80,7 @@ public class LetsFindOutController : MonoBehaviour
 
     public void DisplayAnswer(Sprite ansSprite)
     {
+        ScoreManager.instance.RightAnswer(qIndex++, questionID: question.id, answerID: GetOptionID(ansSprite.name));
         displayImages[displayCounter].sprite = ansSprite;
         displayImages[displayCounter].gameObject.SetActive(true);
         Utilities.Instance.ANIM_CorrectScaleEffect(displayImages[displayCounter++].transform.parent);
@@ -76,8 +97,10 @@ public class LetsFindOutController : MonoBehaviour
         EnableActivityCompleted();
     }
 
-    public void WronglyAnswered()
+    public void WronglyAnswered(string answerVal)
     {
+        // var selectedObj = EventSystem.current.currentSelectedGameObject;
+        ScoreManager.instance.RightAnswer(qIndex, questionID: question.id, answerID: GetOptionID(answerVal));
         audioSource.PlayOneShot(wrongClip);
     }
 
@@ -102,6 +125,54 @@ public class LetsFindOutController : MonoBehaviour
 
     void EnableActivityCompleted()
     {
+        BlendedOperations.instance.NotifyActivityCompleted();
         activityCompleted.SetActive(true);
     }
+
+#region QA
+ 
+    int GetOptionID(string selectedOption)
+    {
+        for (int i = 0; i < options.Length; i++)
+        {
+            if (options[i].text == selectedOption)
+            {
+                Debug.Log(selectedOption);
+                return options[i].id;
+            }
+        }
+        return -1;
+    }
+
+    void GetData(int questionIndex)
+    {
+        question = QAManager.instance.GetQuestionAt(0, questionIndex);
+        // if(question != null){
+        options = QAManager.instance.GetOption(0, questionIndex);
+        answers = QAManager.instance.GetAnswer(0, questionIndex);
+        // }
+    }
+ 
+    void GetAdditionalData()
+    {
+        additionalFields = QAManager.instance.GetAdditionalField(0);
+    }
+ 
+    // void AssignData()
+    // {
+    //     // Custom code
+    //     for (int i = 0; i < optionsGO.Length; i++)
+    //     {
+    //         optionsGO[i].GetComponent<Image>().sprite = options[i]._sprite;
+    //         optionsGO[i].tag = "Untagged";
+    //         Debug.Log(optionsGO[i].name, optionsGO[i]);
+    //         if (CheckOptionIsAns(options[i]))
+    //         {
+    //             optionsGO[i].tag = "answer";
+    //         }
+    //     }
+    //     // answerCount.text = "/"+answers.Length;
+    // }
+
+#endregion
 }

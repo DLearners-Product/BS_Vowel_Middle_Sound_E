@@ -17,9 +17,28 @@ public class treeapple : MonoBehaviour
     public static treeapple OBJ_treeapple;
     public TextMeshProUGUI counterText;
     int TOTAL_ANS = 6;
+#region QA
+    private int qIndex;
+    public GameObject questionGO;
+    public GameObject[] optionsGO;
+    public bool isActivityCompleted = false;
+    public Dictionary<string, Component> additionalFields;
+    Component question;
+    Component[] _options;
+    Component[] answers;
+#endregion
 
     public void Start()
     {
+#region DataSetter
+        // Main_Blended.OBJ_main_blended.levelno = 8;
+        QAManager.instance.UpdateActivityQuestion();
+        qIndex = 0;
+        GetData(qIndex);
+        GetAdditionalData();
+        // AssignData();
+#endregion
+
         OBJ_treeapple = this;
         I_collection = 0;
   
@@ -43,6 +62,9 @@ public class treeapple : MonoBehaviour
     public void THI_basketFall()
     {
         B_levelcomp = false;
+
+        BlendedOperations.instance.NotifyActivityCompleted();
+
         G_basket.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         G_basket.GetComponent<Rigidbody2D>().gravityScale = 1;
         for (int i = 0; i < GA_apples.Length; i++)
@@ -63,9 +85,13 @@ public class treeapple : MonoBehaviour
     }
     public void BUT_clickApple()
     {
-        if(EventSystem.current.currentSelectedGameObject.name=="a")
+        var currentClickedGO = EventSystem.current.currentSelectedGameObject;
+        if(currentClickedGO.name=="a")
         {
-            EventSystem.current.currentSelectedGameObject.GetComponent<Rigidbody2D>().gravityScale = 0.8f;
+            ScoreManager.instance.RightAnswer(qIndex++, questionID: question.id, answerID: GetOptionID(currentClickedGO.transform.GetChild(0).GetComponent<Text>().text));
+
+            currentClickedGO.GetComponent<Rigidbody2D>().gravityScale = 0.8f;
+
             B_lerp = true;
             I_collection++;
             UpdateCounterText();
@@ -88,14 +114,15 @@ public class treeapple : MonoBehaviour
                 }
             }
 
-            EventSystem.current.currentSelectedGameObject.GetComponent<Collider2D>().enabled = true;
+            currentClickedGO.GetComponent<Collider2D>().enabled = true;
             Invoke("THI_enableColl", 100f * Time.deltaTime);
         }
         else
         {
+            ScoreManager.instance.WrongAnswer(qIndex, questionID: question.id, answerID: GetOptionID(currentClickedGO.transform.GetChild(0).GetComponent<Text>().text));
             Debug.Log("WRONG");
         }
-        EventSystem.current.currentSelectedGameObject.GetComponent<AudioSource>().Play();
+        currentClickedGO.GetComponent<AudioSource>().Play();
     }
     public void THI_enableColl()
     {
@@ -120,4 +147,46 @@ public class treeapple : MonoBehaviour
     {
         counterText.text = $"{I_collection} / {TOTAL_ANS}";
     }
+
+#region QA
+    int GetOptionID(string selectedOption)
+    {
+        for (int i = 0; i < _options.Length; i++)
+        {
+            if (_options[i].text == selectedOption)
+            {
+                return _options[i].id;
+            }
+        }
+        return -1;
+    }
+
+    void GetData(int questionIndex)
+    {
+        question = QAManager.instance.GetQuestionAt(0, questionIndex);
+        _options = QAManager.instance.GetOption(0, questionIndex);
+        answers = QAManager.instance.GetAnswer(0, questionIndex);
+    }
+ 
+    void GetAdditionalData()
+    {
+        additionalFields = QAManager.instance.GetAdditionalField(0);
+    }
+ 
+    // void AssignData()
+    // {
+    //     // Custom code
+    //     for (int i = 0; i < optionsGO.Length; i++)
+    //     {
+    //         optionsGO[i].GetComponent<Image>().sprite = _options[i]._sprite;
+    //         optionsGO[i].tag = "Untagged";
+    //         Debug.Log(optionsGO[i].name, optionsGO[i]);
+    //         // if (CheckOptionIsAns(options[i]))
+    //         // {
+    //         //     optionsGO[i].tag = "answer";
+    //         // }
+    //     }
+    //     // answerCount.text = "/"+answers.Length;
+    // }
+#endregion
 }
