@@ -5160,7 +5160,7 @@ MonoBehaviour:
     HAS_WORKSHEET: 0
     HAS_SYLLABLE: 0
     HAS_GRAMMER: 0
-    HAS_ACTIVITY: 0
+    HAS_ACTIVITY: 1
     IS_MANUAL_ACTIVITY: 0
   - name: 6Lets_find_out
     slideObject: {fileID: 2037337742}
@@ -5173,7 +5173,7 @@ MonoBehaviour:
     HAS_WORKSHEET: 0
     HAS_SYLLABLE: 0
     HAS_GRAMMER: 0
-    HAS_ACTIVITY: 0
+    HAS_ACTIVITY: 1
     IS_MANUAL_ACTIVITY: 0
   - name: 7What_does_it_mean
     slideObject: {fileID: 1112194565}
@@ -5186,7 +5186,7 @@ MonoBehaviour:
     HAS_WORKSHEET: 0
     HAS_SYLLABLE: 0
     HAS_GRAMMER: 0
-    HAS_ACTIVITY: 0
+    HAS_ACTIVITY: 1
     IS_MANUAL_ACTIVITY: 0
   - name: 8Pick_the_apple
     slideObject: {fileID: 875662099}
@@ -5199,7 +5199,7 @@ MonoBehaviour:
     HAS_WORKSHEET: 0
     HAS_SYLLABLE: 0
     HAS_GRAMMER: 0
-    HAS_ACTIVITY: 0
+    HAS_ACTIVITY: 1
     IS_MANUAL_ACTIVITY: 0
   - name: '9Listen_to_my_middle_sound '
     slideObject: {fileID: 704799021}
@@ -5212,7 +5212,7 @@ MonoBehaviour:
     HAS_WORKSHEET: 0
     HAS_SYLLABLE: 0
     HAS_GRAMMER: 0
-    HAS_ACTIVITY: 0
+    HAS_ACTIVITY: 1
     IS_MANUAL_ACTIVITY: 0
   - name: 10e sound poem
     slideObject: {fileID: 1171111546}
