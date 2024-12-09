@@ -63,7 +63,7 @@ MonoBehaviour:
   counterDisplay: {fileID: 6314365304988942255}
   activityCompleted: {fileID: 5115860876891205505}
   AC_right: {fileID: 8300000, guid: a39c46c82d9df44d7a7b5f541fcf7c9d, type: 3}
-  AC_wrong: {fileID: 8300000, guid: a39db61914f3146b096f9e97dcccec6f, type: 3}
+  AC_wrong: {fileID: 8300000, guid: ddc0fe2d45c8ccd4b8ce29f5d69beec0, type: 3}
   AC_questions:
   - {fileID: 8300000, guid: bea75abad31aa45f69a9f606d8d51a40, type: 3}
   - {fileID: 8300000, guid: 950de8b4e3d564f62a44aa6d29c28075, type: 3}
@@ -71,6 +71,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5d07d4d238aaa7f4f85f1d9119a14950, type: 3}
   - {fileID: 8300000, guid: 39bd0c14161b783428b8afe040c44df5, type: 3}
   - {fileID: 8300000, guid: ceabfffe3d3bd440baab913141a53fb5, type: 3}
+  questionGO: {fileID: 0}
+  optionsGO: []
+  isActivityCompleted: 0
 --- !u!82 &6314365304033542478
 AudioSource:
   m_ObjectHideFlags: 0
