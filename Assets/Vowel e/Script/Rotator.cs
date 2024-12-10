@@ -23,6 +23,19 @@ public class Rotator : MonoBehaviour
         SpawnObjects();
     }
 
+    private void OnEnable() {
+        _obj.DEL_activityCompleted += OnActivityCompleted;
+    }
+
+    private void OnDisable() {
+        _obj.DEL_activityCompleted -= OnActivityCompleted;
+    }
+
+    void OnActivityCompleted()
+    {
+        doRotation = false;
+    }
+
     void Update()
     {
         if(!doRotation) return;

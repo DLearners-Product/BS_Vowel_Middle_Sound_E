@@ -31,8 +31,14 @@ public class VideoProgressBar : MonoBehaviour, IDragHandler, IPointerDownHandler
         videoPlayer.isLooping = false;
         Cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         videoPlayer.targetTexture.Release();
+        videoPlayer.started += OnVideoStart;
         videoPlayer.loopPointReached += VideoFinished;
         videoPlayer.errorReceived += VideoPlayerErrorOccured;
+    }
+
+    void OnVideoStart(VideoPlayer vp)
+    {
+        if(enablePanelOnVideoComplete != null) enablePanelOnVideoComplete.SetActive(false);
     }
 
     void VideoFinished(VideoPlayer vp){

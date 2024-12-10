@@ -19,6 +19,8 @@ public class LetsFindOutController : MonoBehaviour
     int displayCounter=0;
     AudioSource audioSource;
     List<string> _answeredQuestion;
+    public delegate void DEL_NoArg();
+    public DEL_NoArg DEL_activityCompleted;
 
 #region QA
     private int qIndex;
@@ -127,6 +129,7 @@ public class LetsFindOutController : MonoBehaviour
     {
         BlendedOperations.instance.NotifyActivityCompleted();
         activityCompleted.SetActive(true);
+        DEL_activityCompleted?.Invoke();
     }
 
 #region QA
