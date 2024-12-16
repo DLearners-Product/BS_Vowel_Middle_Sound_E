@@ -19,6 +19,7 @@ public class eaudit : MonoBehaviour
     public AnimationClip transitionClip;
     public Transform speakerBTN;
     public TextMeshProUGUI counterText;
+    public GameObject optionBlocker;
     public GameObject activityCompleted;
 
 #region QA
@@ -35,7 +36,7 @@ public class eaudit : MonoBehaviour
     public void Start()
     {
 #region DataSetter
-        // Main_Blended.OBJ_main_blended.levelno = 9;
+        Main_Blended.OBJ_main_blended.levelno = 9;
         QAManager.instance.UpdateActivityQuestion();
         qIndex = 0;
         GetData(qIndex);
@@ -48,11 +49,13 @@ public class eaudit : MonoBehaviour
         // Invoke(nameof(THI_Sound), 1f);
         UpdateCounterText();
         PlayQuestionAudio();
+        optionBlocker.SetActive(false);
     }
 
 
     public void BUT_next()
     {
+        optionBlocker.SetActive(false);
         I_count++;
 
         if(I_count == AS_words.Length) {
@@ -83,6 +86,7 @@ public class eaudit : MonoBehaviour
         MoveSelectedObjectUp();
         if(I_count==0 || I_count == 2 || I_count == 3 || I_count == 4 || I_count == 7 || I_count == 8 || I_count == 9 || I_count == 10 || I_count == 11)
         {
+            optionBlocker.SetActive(true);
             ScoreManager.instance.RightAnswer(qIndex++, questionID: question.id, answerID: GetOptionID("Yes"));
             AS_correct.Play();
             StartCoroutine(CallNextQuestion());
@@ -119,6 +123,7 @@ public class eaudit : MonoBehaviour
         MoveSelectedObjectUp();
         if (I_count == 1 || I_count == 5 || I_count == 6 )
         { 
+            optionBlocker.SetActive(true);
             ScoreManager.instance.RightAnswer(qIndex++, questionID: question.id, answerID: GetOptionID("No"));
             AS_correct.Play();
             StartCoroutine(CallNextQuestion());
