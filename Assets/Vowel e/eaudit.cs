@@ -15,6 +15,8 @@ public class eaudit : MonoBehaviour
     public Transform speakerBurst;
     AudioSource audioSource;
     public Animator speakerBtnAnim;
+    public Animator questionTransition;
+    public AnimationClip transitionClip;
     public Transform speakerBTN;
     public TextMeshProUGUI counterText;
     public GameObject activityCompleted;
@@ -33,7 +35,7 @@ public class eaudit : MonoBehaviour
     public void Start()
     {
 #region DataSetter
-        // Main_Blended.OBJ_main_blended.levelno = 9;
+        Main_Blended.OBJ_main_blended.levelno = 9;
         QAManager.instance.UpdateActivityQuestion();
         qIndex = 0;
         GetData(qIndex);
@@ -61,6 +63,12 @@ public class eaudit : MonoBehaviour
 
         GetData(I_count);
         UpdateCounterText();
+        StartCoroutine(WaitandPlayQuestion(transitionClip.length / 2));
+    }
+
+    IEnumerator WaitandPlayQuestion(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
         PlayQuestionAudio();
     }
 
@@ -124,7 +132,9 @@ public class eaudit : MonoBehaviour
 
     IEnumerator CallNextQuestion()
     {
-        yield return new WaitForSeconds(AS_correct.clip.length + 0.1f);
+        yield return new WaitForSeconds(AS_correct.clip.length);
+        questionTransition.Play("s10_question_transition");
+        yield return new WaitForSeconds(transitionClip.length / 2);
         BUT_next();
     }
 
