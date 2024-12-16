@@ -35,7 +35,7 @@ public class eaudit : MonoBehaviour
     public void Start()
     {
 #region DataSetter
-        Main_Blended.OBJ_main_blended.levelno = 9;
+        // Main_Blended.OBJ_main_blended.levelno = 9;
         QAManager.instance.UpdateActivityQuestion();
         qIndex = 0;
         GetData(qIndex);
@@ -132,7 +132,7 @@ public class eaudit : MonoBehaviour
 
     IEnumerator CallNextQuestion()
     {
-        yield return new WaitForSeconds(AS_correct.clip.length);
+        yield return new WaitForSeconds(1f);
         questionTransition.Play("s10_question_transition");
         yield return new WaitForSeconds(transitionClip.length / 2);
         BUT_next();
