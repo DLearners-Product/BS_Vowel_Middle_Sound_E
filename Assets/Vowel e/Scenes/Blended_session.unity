@@ -2032,17 +2032,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: '9Listen_to_my_middle_sound '
       objectReference: {fileID: 0}
+    - target: {fileID: 9222151974479166983, guid: 422dbc53ff75f5549b12c8ad8e210d5b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 422dbc53ff75f5549b12c8ad8e210d5b, type: 3}
 --- !u!224 &704799020 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5514757696176827183, guid: 422dbc53ff75f5549b12c8ad8e210d5b,
-    type: 3}
-  m_PrefabInstance: {fileID: 704799019}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &704799021 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5514757696176827344, guid: 422dbc53ff75f5549b12c8ad8e210d5b,
+  m_CorrespondingSourceObject: {fileID: 9222151974479166983, guid: 422dbc53ff75f5549b12c8ad8e210d5b,
     type: 3}
   m_PrefabInstance: {fileID: 704799019}
   m_PrefabAsset: {fileID: 0}
@@ -4009,7 +4008,7 @@ PrefabInstance:
     - target: {fileID: 3725847341252804953, guid: 4565e84c14b4e0144a17d0fe94d59f70,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3725847341252804953, guid: 4565e84c14b4e0144a17d0fe94d59f70,
         type: 3}
@@ -5202,7 +5201,8 @@ MonoBehaviour:
     HAS_ACTIVITY: 1
     IS_MANUAL_ACTIVITY: 0
   - name: '9Listen_to_my_middle_sound '
-    slideObject: {fileID: 704799021}
+    slideObject: {fileID: 9222151974479167224, guid: 422dbc53ff75f5549b12c8ad8e210d5b,
+      type: 3}
     textComponents: []
     slideName: 
     teacherInstruction: 
